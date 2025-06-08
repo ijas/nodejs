@@ -12,7 +12,20 @@ const DELTA_API_URL = 'https://api.delta.exchange/strategy-bots/execute';
 app.post('/webhook', async (req, res) => {
   try {
     const { symbol, side, qty, stop_loss, take_profit } = req.body;
-  
+    const order = {
+  product_id: 'BTCUSD.P', // must be the product ID, not symbol
+  size: 10,
+  side: 'sell', // or 'buy'
+  order_type: 'market',
+};
+
+await axios.post('https://api.delta.exchange/orders', order, {
+  headers: {
+    'api-key': process.env.DELTA_API_KEY,
+    'api-secret': process.env.DELTA_API_SECRET,
+    'Content-Type': 'application/json',
+  },
+});
    
     const order = {
       strategy_id: process.env.STRATEGY_ID,
