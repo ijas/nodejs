@@ -7,7 +7,7 @@ dotenv.config();
 const app = express();
 app.use(express.json());
 
-const DELTA_API_URL = 'https://api.delta.exchange/strategies/execute';
+const DELTA_API_URL = 'https://api.delta.exchange/strategy-bots/execute';
 
 app.post('/webhook', async (req, res) => {
   try {
