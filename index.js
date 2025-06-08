@@ -12,7 +12,8 @@ const DELTA_API_URL = 'https://api.delta.exchange/strategy-bots/execute';
 app.post('/webhook', async (req, res) => {
   try {
     const { symbol, side, qty, stop_loss, take_profit } = req.body;
-
+  
+    console.log('Order error:', side);
     const order = {
       strategy_id: process.env.STRATEGY_ID,
       symbol: symbol,
@@ -23,15 +24,15 @@ app.post('/webhook', async (req, res) => {
       trigger_time: new Date().toISOString()
     };
 
-    const response = await axios.post(DELTA_API_URL, order, {
-      headers: {
-        'api-key': process.env.DELTA_API_KEY,
-        'api-secret': process.env.DELTA_API_SECRET,
-        'Content-Type': 'application/json'
-      }
-    });
+    //const response = await axios.post(DELTA_API_URL, order, {
+     // headers: {
+       // 'api-key': process.env.DELTA_API_KEY,
+       // 'api-secret': process.env.DELTA_API_SECRET,
+       // 'Content-Type': 'application/json'
+     // }
+  //  });
 
-    console.log('Order sent:', response.data);
+   // console.log('Order sent:', response.data);
     res.status(200).send('Order executed');
   } catch (err) {
     console.error('Order error:', err.message);
