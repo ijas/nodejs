@@ -18,8 +18,8 @@ app.post('/webhook', async (req, res) => {
       symbol: ticker,
       side: side, // "buy" or "sell"
       qty: qty,
-      stop_loss: sl,   // optional
-      take_profit: tp, // optional
+      stop_loss: sl - 100,   // optional
+      take_profit: tp + 500, // optional
       trigger_time: new Date().toISOString()
     };
 
