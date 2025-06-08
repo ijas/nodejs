@@ -19,7 +19,7 @@ app.post('/webhook', async (req, res) => {
   order_type: 'market',
 };
 
-await axios.post('https://api-demo.delta.exchange/orders', order1, {
+await axios.post('https://demo.delta.exchange/orders', order1, {
   headers: {
     'api-key': process.env.DELTA_API_KEY,
     'api-secret': process.env.DELTA_API_SECRET,
