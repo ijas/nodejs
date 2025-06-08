@@ -11,15 +11,15 @@ const DELTA_API_URL = 'https://api.delta.exchange/strategy-bots/execute';
 
 app.post('/webhook', async (req, res) => {
   try {
-    const { ticker, side, qty, sl, tp } = req.body;
+    const { symbol, side, qty, stop_loss, take_profit } = req.body;
 
     const order = {
       strategy_id: process.env.STRATEGY_ID,
-      symbol: ticker,
+      symbol: symbol,
       side: side, // "buy" or "sell"
       qty: qty,
-      stop_loss: sl - 100,   // optional
-      take_profit: tp + 500, // optional
+      stop_loss: stop_loss - 100,   // optional
+      take_profit: take_profit + 500, // optional
       trigger_time: new Date().toISOString()
     };
 
