@@ -35,7 +35,7 @@ app.post('/webhook', async (req, res) => {
     console.log('Order sent:', response.data);
     res.status(200).send('Order executed');
   } catch (err) {
-    console.error('Order error:', err.message);
+    console.error('Order errorx:', err);
     res.status(500).send('Order failed');
   }
 });
