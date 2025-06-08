@@ -13,7 +13,7 @@ app.post('/webhook', async (req, res) => {
   try {
     const { symbol, side, qty, stop_loss, take_profit } = req.body;
   
-    console.log('Order error:', side);
+   
     const order = {
       strategy_id: process.env.STRATEGY_ID,
       symbol: symbol,
@@ -23,7 +23,7 @@ app.post('/webhook', async (req, res) => {
       take_profit: take_profit + 500, // optional
       trigger_time: new Date().toISOString()
     };
-
+ console.log('Order error:', order);
     //const response = await axios.post(DELTA_API_URL, order, {
      // headers: {
        // 'api-key': process.env.DELTA_API_KEY,
