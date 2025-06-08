@@ -24,15 +24,15 @@ app.post('/webhook', async (req, res) => {
       trigger_time: new Date().toISOString()
     };
  console.log('Order error:', order);
-    //const response = await axios.post(DELTA_API_URL, order, {
-     // headers: {
-       // 'api-key': process.env.DELTA_API_KEY,
-       // 'api-secret': process.env.DELTA_API_SECRET,
-       // 'Content-Type': 'application/json'
-     // }
-  //  });
+    const response = await axios.post(DELTA_API_URL, order, {
+      headers: {
+        'api-key': process.env.DELTA_API_KEY,
+        'api-secret': process.env.DELTA_API_SECRET,
+        'Content-Type': 'application/json'
+      }
+    });
 
-   // console.log('Order sent:', response.data);
+    console.log('Order sent:', response.data);
     res.status(200).send('Order executed');
   } catch (err) {
     console.error('Order error:', err.message);
