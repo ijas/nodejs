@@ -19,8 +19,8 @@ app.post('/webhook', async (req, res) => {
       symbol: symbol,
       side: side, // "buy" or "sell"
       qty: qty,
-      stop_loss: stop_loss - 100,   // optional
-      take_profit: take_profit + 500, // optional
+      stop_loss: parseFloat(stop_loss) - 100,   // optional
+      take_profit: parseFloat(take_profit) + 500, // optional
       trigger_time: new Date().toISOString()
     };
  console.log('Order error:', order);
