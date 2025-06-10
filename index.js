@@ -7,7 +7,7 @@ dotenv.config();
 const app = express();
 app.use(express.json());
 
-const DELTA_API_URL = 'https://cdn.india.deltaex.org';
+const DELTA_API_URL = 'https://cdn-ind.testnet.deltaex.org';
 
 app.post('/webhook', async (req, res) => {
   try {
@@ -26,7 +26,7 @@ app.post('/webhook', async (req, res) => {
     const response = await axios.post(DELTA_API_URL, order, {
       headers: {
         'api-key': process.env.DELTA_API_KEY,
-        //'api-secret': process.env.DELTA_API_SECRET,
+        'api-secret': process.env.DELTA_API_SECRET,
         'Content-Type': 'application/json',        
         'Accept': 'application/json'
       }
