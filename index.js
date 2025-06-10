@@ -7,7 +7,7 @@ dotenv.config();
 const app = express();
 app.use(express.json());
 
-const DELTA_API_URL = 'https://cdn-ind.testnet.deltaex.org';
+const DELTA_API_URL = 'https://www.delta.exchange/';
 
 app.post('/webhook', async (req, res) => {
   try {
