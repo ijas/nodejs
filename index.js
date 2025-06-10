@@ -26,8 +26,9 @@ app.post('/webhook', async (req, res) => {
     const response = await axios.post(DELTA_API_URL, order, {
       headers: {
         'api-key': process.env.DELTA_API_KEY,
-        'api-secret': process.env.DELTA_API_SECRET,
-        'Content-Type': 'application/json'
+        //'api-secret': process.env.DELTA_API_SECRET,
+        'Content-Type': 'application/json',        
+        'Accept': 'application/json'
       }
     });
 
