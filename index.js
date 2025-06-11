@@ -12,10 +12,10 @@ const DELTA_API_URL = 'https://cdn-ind.testnet.deltaex.org/v2/orders';
 
 app.post('/webhook', async (req, res) => {
   try {
-    const { product_id, qty, side, order_type = 'market' } = req.body;
+    const { symbol, side, qty, order_type = 'market' } = req.body;
 
     const payload = {
-      27,
+      symbol,
       qty,
       side,
       order_type,
