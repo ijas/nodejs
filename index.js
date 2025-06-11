@@ -23,12 +23,18 @@ app.post('/webhook', async (req, res) => {
       client_order_id: 'webhook-' + Date.now()
     };
 
-    const timestamp = Date.now().toString();
-    const signaturePayload = timestamp + JSON.stringify(payload);
-    const signature = crypto
-      .createHmac('sha256', process.env.DELTA_API_SECRET)
-      .update(signaturePayload)
-      .digest('hex');
+   
+    // Utility function to get Delta server time in milliseconds
+async function getDeltaTimestamp() {
+  const res = await axios.get('https://cdn-ind.testnet.deltaex.org/v2/time');
+  return res.data.epoch_in_milliseconds.toString();
+}
+   const timestamp = await getDeltaTimestamp();
+const signaturePayload = timestamp + JSON.stringify(payload);
+const signature = crypto
+  .createHmac('sha256', process.env.DELTA_API_SECRET)
+  .update(signaturePayload)
+  .digest('hex');
 
     const headers = {
       'Content-Type': 'application/json',
