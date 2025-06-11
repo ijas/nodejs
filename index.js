@@ -44,7 +44,9 @@ const signature = crypto
       'timestamp': timestamp
     };
 
-    const response = await axios.post(DELTA_API_URL, payload, { headers });
+    const order_list = 'https://https://cdn-ind.testnet.deltaex.org/v2/l2orderbook/{symbol}';
+   // const response = await axios.post(DELTA_API_URL, payload, { headers });
+    const response = await axios.get(order_list, payload, { headers });
 
     console.log('✅ Order Sent:', response.data);
     res.status(200).json({ success: true, data: response.data });
