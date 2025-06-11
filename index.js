@@ -13,7 +13,7 @@ const kc = new KiteConnect({
 });
 
 kc.setAccessToken(process.env.KITE_ACCESS_TOKEN);
-kc.generateSession("xOCamIXHS16KSDwK3Ne7RbsOvDDbU3ZR", KITE_API_SECRET)
+kc.generateSession("xOCamIXHS16KSDwK3Ne7RbsOvDDbU3ZR", process.env.KITE_API_SECRET)
   .then(session => {
     console.log("✅ Access Token:", session.access_token);
   })
