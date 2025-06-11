@@ -15,10 +15,10 @@ app.post('/webhook', async (req, res) => {
     const { symbol, side, qty, order_type = 'market' } = req.body;
 
     const payload = {
-      symbol,
-      qty,
-      side,
-      order_type,
+      symbol: symbol,
+      qty: qty,
+      side: side,
+      order_type : order_type,
       post_only: false,
       client_order_id: 'webhook-' + Date.now()
     };
