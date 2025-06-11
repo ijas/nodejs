@@ -13,6 +13,11 @@ const kc = new KiteConnect({
 });
 
 kc.setAccessToken(process.env.KITE_ACCESS_TOKEN);
+kc.generateSession("your_request_token", "your_api_secret")
+  .then(session => {
+    console.log("✅ Access Token:", session.access_token);
+  })
+  .catch(err => console.error("❌ Token Error:", err.message));
 
 app.post('/webhook', async (req, res) => {
   try {
