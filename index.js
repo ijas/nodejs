@@ -29,6 +29,8 @@ async function getDeltaTimestamp() {
   const res = await axios.get('https://cdn-ind.testnet.deltaex.org/v2/time');
   return res.data.epoch_in_milliseconds.toString();
 }
+
+    console.log('time',getDeltaTimestamp());
    const timestamp = await getDeltaTimestamp();
 const signaturePayload = timestamp + JSON.stringify(payload);
 const signature = crypto
